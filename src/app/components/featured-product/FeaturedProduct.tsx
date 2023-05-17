@@ -22,17 +22,12 @@ const FeaturedProduct = ({ product }: any) => {
           Photo of the day
         </div>
       </div>
-      <Button
-        type="primary"
-        title="Add to cart"
-        onClick={() => {}}
-        className="hidden group-hover:block"
-      />
+      <Button type="primary" title="Add to cart" onClick={() => {}} />
       <div className="font-bold text-[22px]">About {name}</div>
       <div className="text text-stone-500">{details.description}</div>
       <div className="font-bold	 text-[22px]">People also buy</div>
-      <div className="flex justify-between">
-        {details.recommendations.map((item) => (
+      <div className="flex gap-6">
+        {details.recommendations.map((item: any) => (
           <Image
             key={item.src}
             src={item.src}
