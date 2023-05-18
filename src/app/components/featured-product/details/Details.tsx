@@ -26,7 +26,7 @@ const Details: FC<DetailsProps> = ({
         </div>
       </div>
       <div>
-        <div className="md:w-fit border-red-500 border-2">
+        <div className="md:w-fit">
           <div className="font-bold	text-[22px] md:text-right">
             People also buy
           </div>

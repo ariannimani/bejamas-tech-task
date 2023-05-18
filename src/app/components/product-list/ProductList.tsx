@@ -27,7 +27,7 @@ const ProductList = async ({ products, searchParams }: ProductListProps) => {
         <SortOptions />
       </div>
       <div className="flex">
-        {/* <Filter categories={categories} prices={prices} /> */}
+        <Filter categories={categories} prices={prices} />
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {products.length > 0 &&
             products.map((product) => (
