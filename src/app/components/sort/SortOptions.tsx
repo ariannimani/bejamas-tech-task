@@ -20,7 +20,7 @@ const SortOptions = () => {
   };
 
   return (
-    <div className="hidden md:flex items-center">
+    <div className="hidden xl:flex items-center">
       <label htmlFor="sortOptions" className="mr-2 text-stone-500">
         Sort by:
       </label>

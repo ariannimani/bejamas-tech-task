@@ -12,9 +12,9 @@ interface ProductListProps {
   searchParams: { [key: string]: string | string[] | undefined };
 }
 const ProductList = async ({ products, searchParams }: ProductListProps) => {
-  const { categories, prices, pages } = await getDistinctCategories();
+  // const { categories, prices, pages } = await getDistinctCategories();
 
-  if (!categories && !prices && !pages) return <></>;
+  // if (!categories && !prices && !pages) return <></>;
   return (
     <div className="mt-5">
       <div className="flex justify-between">
@@ -27,7 +27,7 @@ const ProductList = async ({ products, searchParams }: ProductListProps) => {
         <SortOptions />
       </div>
       <div className="flex">
-        <Filter categories={categories} prices={prices} />
+        {/* <Filter categories={categories} prices={prices} /> */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {products.length > 0 &&
             products.map((product) => (
@@ -35,7 +35,8 @@ const ProductList = async ({ products, searchParams }: ProductListProps) => {
             ))}
         </div>
       </div>
-      <Pagination searchParams={searchParams} totalPages={pages} />
+      <Pagination searchParams={searchParams} totalPages={6} />
+      {/* {pages} /> */}
     </div>
   );
 };

@@ -4,6 +4,7 @@ import {
   ProductList,
   Pagination,
 } from "@/app/components";
+import { products } from "@/firebase/data";
 import {
   getFeaturedPost,
   getProductsFromFirebase,
@@ -16,8 +17,8 @@ export default async function Home({
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-  const data = await getProductsFromFirebase(searchParams);
-  const featured = await getFeaturedPost();
+  const data = products; //await getProductsFromFirebase(searchParams);
+  const featured = products.filter((product) => product.featured === true)[0]; // await getFeaturedPost();
 
   if (!data) return <></>;
 

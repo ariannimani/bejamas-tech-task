@@ -28,7 +28,7 @@ export const products = [
   {
     name: "Man",
     category: "people",
-    price: 100,
+    price: 50.99,
     currency: "USD",
     image: {
       src: "https://images.pexels.com/photos/4890259/pexels-photo-4890259.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -41,7 +41,7 @@ export const products = [
   {
     name: "Empire State Building",
     category: "landmarks",
-    price: 101,
+    price: 40.99,
     currency: "USD",
     dimensions: {
       width: 1260,
@@ -58,7 +58,7 @@ export const products = [
   {
     name: "Burj Khalifa",
     category: "landmarks",
-    price: 101,
+    price: 22.59,
     currency: "USD",
     dimensions: {
       width: 1260,
@@ -75,7 +75,7 @@ export const products = [
   {
     name: "Riding",
     category: "people",
-    price: 101,
+    price: 80.99,
     currency: "USD",
     image: {
       src: "https://images.pexels.com/photos/1174103/pexels-photo-1174103.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -111,7 +111,7 @@ export const products = [
   {
     name: "Manhattan Bridge",
     category: "landmarks",
-    price: 101,
+    price: 120,
     currency: "USD",
     dimensions: {
       width: 1260,
@@ -128,7 +128,7 @@ export const products = [
   {
     name: "San Francisco Bridge",
     category: "landmarks",
-    price: 101,
+    price: 180,
     currency: "USD",
     dimensions: {
       width: 1260,
@@ -145,7 +145,7 @@ export const products = [
   {
     name: "Konzerthaus Berlin",
     category: "landmarks",
-    price: 101,
+    price: 44.99,
     currency: "USD",
     dimensions: {
       width: 1260,
@@ -163,7 +163,7 @@ export const products = [
   {
     name: "FriendShip",
     category: "people",
-    price: 101,
+    price: 220.99,
     currency: "USD",
     dimensions: {
       width: 1260,
@@ -181,7 +181,7 @@ export const products = [
   {
     name: "Distraction",
     category: "people",
-    price: 101,
+    price: 99.99,
     currency: "USD",
     dimensions: {
       width: 1260,
@@ -199,7 +199,7 @@ export const products = [
   {
     name: "Angel Falls",
     category: "nature",
-    price: 101,
+    price: 70.99,
     currency: "USD",
     dimensions: {
       width: 1260,
@@ -216,7 +216,7 @@ export const products = [
   {
     name: "Church",
     category: "landmarks",
-    price: 101,
+    price: 5.99,
     currency: "USD",
     dimensions: {
       width: 1260,
@@ -233,7 +233,7 @@ export const products = [
   {
     name: "City",
     category: "nature",
-    price: 101,
+    price: 9.99,
     currency: "USD",
     dimensions: {
       width: 1260,
@@ -251,7 +251,7 @@ export const products = [
   {
     name: "Rainbow",
     category: "nature",
-    price: 101,
+    price: 130,
     currency: "USD",
     dimensions: {
       width: 1260,
@@ -285,7 +285,7 @@ export const products = [
   {
     name: "Kid",
     category: "people",
-    price: 101,
+    price: 250,
     currency: "USD",
     dimensions: {
       width: 1260,
@@ -303,7 +303,7 @@ export const products = [
   {
     name: "Pizza",
     category: "food",
-    price: 101,
+    price: 80.99,
     currency: "USD",
     dimensions: {
       width: 1260,
@@ -320,7 +320,7 @@ export const products = [
   {
     name: "Sushi",
     category: "landmarks",
-    price: 101,
+    price: 44,
     currency: "USD",
     dimensions: {
       width: 1260,
@@ -337,7 +337,7 @@ export const products = [
   {
     name: "Chicken",
     category: "food",
-    price: 101,
+    price: 129,
     currency: "USD",
     dimensions: {
       width: 1260,

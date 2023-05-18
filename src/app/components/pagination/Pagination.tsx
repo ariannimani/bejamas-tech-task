@@ -1,3 +1,5 @@
+import { LeftArrowIcon, RightArrowIcon } from "@/assets/icons";
+import Image from "next/image";
 import Link from "next/link";
 import React, { FC } from "react";
 
@@ -18,9 +20,15 @@ const Pagination: FC<PaginationProps> = ({ searchParams, totalPages }) => {
   const canGoNext = currentPage < totalPages;
 
   return (
-    <div className={"flex flex-row justify-center gap-2 mt-24"}>
+    <div
+      className={
+        "flex flex-row justify-center gap-2 mt-24 font-semibold text-2xl items-center"
+      }
+    >
       <Link href={canGoBack ? `/?page=${currentPage - 1}` : {}}>
-        <span>Previous</span>
+        <span>
+          <Image src={LeftArrowIcon} alt="left arrow" />
+        </span>
       </Link>
 
       {pageNumbers.map((page) => {
@@ -35,7 +43,9 @@ const Pagination: FC<PaginationProps> = ({ searchParams, totalPages }) => {
       })}
 
       <Link href={canGoNext ? `/?page=${currentPage + 1}` : {}}>
-        <span>Next</span>
+        <span>
+          <Image src={RightArrowIcon} alt="right arrow" />
+        </span>
       </Link>
     </div>
   );

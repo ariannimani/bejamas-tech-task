@@ -1,7 +1,7 @@
-import { CartIcon, LogoIcon } from "@/assets/icons";
 import Image from "next/image";
 import React from "react";
 import CartWrapper from "../cart/CartWrapper";
+import { LogoIcon } from "@/assets/icons";
 
 const Header = () => {
   return (

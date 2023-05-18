@@ -3,7 +3,7 @@ import React from "react";
 import Cart from "./Cart";
 
 const CartWrapper = async () => {
-  const products = await getCartItems();
+  const products = []; // await getCartItems();
 
   if (!products) return <></>;
 
