@@ -1,10 +1,10 @@
 import React from "react";
 import Checkbox from "../../checkbox/CheckBox";
 
-const FilterItem = ({ title }: any) => {
+const FilterItem = ({ title, type }: any) => {
   return (
     <label className="flex gap-1 mt-4">
-      <Checkbox />
+      <Checkbox label={title} type={type} />
       {title}
     </label>
   );
