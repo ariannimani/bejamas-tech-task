@@ -3,10 +3,18 @@ import React from "react";
 import Image from "next/image";
 import { Button } from "@/app/components";
 import { capitalizeFirstLetter, convertToCurrency } from "@/utils/utils";
+import { addToCart } from "@/firebase/cartFunctions";
+import { useRouter } from "next/navigation";
 
 const ProductCard = ({ product }: any) => {
+  const router = useRouter();
+
   const { name, category, price, currency, image, bestseller } = product;
 
+  const addToCartHandler = () => {
+    addToCart(product);
+    router.refresh();
+  };
   return (
     <div className="mt-4">
       <div className="relative group">
@@ -23,7 +31,7 @@ const ProductCard = ({ product }: any) => {
         <Button
           type="primary"
           title="Add to cart"
-          onClick={() => {}}
+          onClick={() => addToCartHandler()}
           className="hidden group-hover:block group-hover:absolute bottom-0 left-0"
         />
       </div>

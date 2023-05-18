@@ -1,24 +1,19 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import FilterItem from "./filter-item/FilterItem";
 import Button from "../button/Button";
 
-const Filter = () => {
-  //   const [selectedCategories, setSelectedCategories] = useState([]);
-  //   const [selectedPriceRange, setSelectedPriceRange] = useState("");
+export interface Prices {
+  id: number;
+  category: string;
+  prices: any[];
+}
 
-  //   const handleCategoryChange = (category) => {
-  //     if (selectedCategories.includes(category)) {
-  //       setSelectedCategories(selectedCategories.filter((c) => c !== category));
-  //     } else {
-  //       setSelectedCategories([...selectedCategories, category]);
-  //     }
-  //   };
-
-  //   const handlePriceRangeChange = (priceRange) => {
-  //     setSelectedPriceRange(priceRange);
-  //   };
-
+interface FilterProps {
+  categories: string[];
+  prices: Prices[];
+}
+const Filter = ({ categories, prices }: FilterProps) => {
   return (
     <div className="hidden p-4 xl:block xl:w-1/5">
       <div className="border-b-2">
@@ -26,13 +21,19 @@ const Filter = () => {
           <h3 className="font-bold">Filter</h3>
           <h3 className="font-bold xl:hidden">X</h3>
         </div>
-        <FilterItem title="People" />
-        <FilterItem title="People" />
-        <FilterItem title="People" />
+        {categories.map((category) => (
+          <FilterItem key={category} title={category} type="category" />
+        ))}
 
         <h3 className="font-bold mt-4">Price Range</h3>
-        <FilterItem title="100-200" />
-        <FilterItem title="200-300" />
+        {prices.map((price) => (
+          <FilterItem
+            key={price.category}
+            title={price.category}
+            type="price"
+            value={price.prices}
+          />
+        ))}
       </div>
       <div className="flex gap-2 mt-6 xl:hidden">
         <Button type="secondary" title="Clear" onClick={() => {}} />

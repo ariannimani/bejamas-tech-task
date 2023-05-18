@@ -1,22 +1,32 @@
-"use client";
 import {
   Header,
   FeaturedProduct,
   ProductList,
   Pagination,
 } from "@/app/components";
-import { products } from "./data/data";
-import Cart from "./components/cart/Cart";
+import {
+  getFeaturedPost,
+  getProductsFromFirebase,
+} from "@/firebase/getProducts";
 
-export default function Home() {
-  const featured = products.filter((product) => product.featured === true)[0];
+export const revalidate = 1;
+
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  const data = await getProductsFromFirebase(searchParams);
+  const featured = await getFeaturedPost();
+
+  if (!data) return <></>;
+
   return (
     <main className="flex min-h-screen flex-col items-center p-3.5 gap-4">
       <Header />
       <FeaturedProduct product={featured} />
-      <ProductList />
-      <Pagination />
-      <Cart />
+      {/* @ts-expect-error Server Component */}
+      <ProductList products={data} searchParams={searchParams} />
     </main>
   );
 }

@@ -3,9 +3,17 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "@/app/components";
 import { kilobytesToMegabytes } from "@/utils/utils";
+import { addToCart } from "@/firebase/cartFunctions";
+import { useRouter } from "next/navigation";
 
 const FeaturedProduct = ({ product }: any) => {
+  const router = useRouter();
   const { name, image, details } = product;
+
+  const addToCartHandler = () => {
+    addToCart(product);
+    router.refresh();
+  };
 
   return (
     <div className="border-b-2 group flex flex-col gap-[35px] mt-[18px]">
@@ -14,9 +22,9 @@ const FeaturedProduct = ({ product }: any) => {
         <Image
           src={image.src}
           alt={image.alt}
-          width={1024}
-          height={1024}
-          className="h-[auto] w-[100%] object-cover"
+          width={details.dimensions.width}
+          height={details.dimensions.height}
+          className="h-[553px] w-[1290px] object-cover"
         />
         <div className="absolute bottom-0 left-0 px-10 py-5 bg-white text-base font-bold">
           Photo of the day
@@ -25,21 +33,22 @@ const FeaturedProduct = ({ product }: any) => {
       <Button
         type="primary"
         title="Add to cart"
-        onClick={() => {}}
-        className="hidden group-hover:block"
+        onClick={() => addToCartHandler()}
       />
       <div className="font-bold text-[22px]">About {name}</div>
-      <div className="text text-stone-500">{details.description}</div>
+      <div className="text text-stone-500 max-w-[1290px]">
+        {details.description}
+      </div>
       <div className="font-bold	 text-[22px]">People also buy</div>
-      <div className="flex justify-between">
-        {details.recommendations.map((item) => (
+      <div className="flex gap-3 md:gap-6">
+        {details.recommendations.map((item: any) => (
           <Image
             key={item.src}
             src={item.src}
             alt={item.alt}
-            width={1024}
-            height={1024}
-            className="w-[97.57px] h-[122.58px] object-cover"
+            width={750}
+            height={1260}
+            className="w-24 h-auto object-cover"
           />
         ))}
       </div>
