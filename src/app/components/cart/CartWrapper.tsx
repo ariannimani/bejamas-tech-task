@@ -3,12 +3,13 @@ import React from "react";
 import Cart from "./Cart";
 
 const CartWrapper = async () => {
-  const products = []; // await getCartItems();
+  const products = getCartItems();
 
   if (!products) return <></>;
 
   return (
     <div>
+      {/* @ts-expect-error Server Component */}
       <Cart products={products} />
     </div>
   );

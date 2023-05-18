@@ -15,7 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={archivo.className}>{children}</body>
+      <body className={archivo.className}>
+        <div className="flex justify-center">
+          <div className="container mx-auto p-6">{children}</div>
+        </div>
+      </body>
     </html>
   );
 }

@@ -34,7 +34,7 @@ const Cart: FC<CartProps> = ({ products }) => {
         </div>
       </div>
       {isOpen && (
-        <div className="border-2 p-4 absolute top-12 right-0 z-10 bg-white w-96 m-10">
+        <div className="border-2 p-4 absolute md:top-12 right-0 z-10 bg-white w-full md:w-96 md:m-10">
           <div className="relative">
             <Image
               src={CloseIcon}

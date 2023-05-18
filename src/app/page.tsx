@@ -17,13 +17,13 @@ export default async function Home({
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-  const data = products; //await getProductsFromFirebase(searchParams);
-  const featured = products.filter((product) => product.featured === true)[0]; // await getFeaturedPost();
+  const data = await getProductsFromFirebase(searchParams);
+  const featured = await getFeaturedPost();
 
   if (!data) return <></>;
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-3.5 gap-4">
+    <main className="flex min-h-screen flex-col items-center gap-4">
       <Header />
       <FeaturedProduct product={featured} />
       {/* @ts-expect-error Server Component */}

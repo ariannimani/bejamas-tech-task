@@ -12,9 +12,9 @@ interface ProductListProps {
   searchParams: { [key: string]: string | string[] | undefined };
 }
 const ProductList = async ({ products, searchParams }: ProductListProps) => {
-  // const { categories, prices, pages } = await getDistinctCategories();
+  const { categories, prices, pages } = await getDistinctCategories();
 
-  // if (!categories && !prices && !pages) return <></>;
+  if (!categories && !prices && !pages) return <></>;
   return (
     <div className="mt-5">
       <div className="flex justify-between">
