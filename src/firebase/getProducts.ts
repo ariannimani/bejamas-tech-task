@@ -70,7 +70,6 @@ export const getProductsFromFirebase = async (searchParams: {
       const documentSnapshots = await getDocs(productsQuery);
       const lastVisible =
         documentSnapshots.docs[documentSnapshots.docs.length - 1];
-      console.log({ lastVisible });
       productsQuery = query(productsQuery, startAfter(lastVisible), limit(6));
     }
   }

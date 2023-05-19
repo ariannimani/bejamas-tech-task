@@ -28,7 +28,7 @@ const ProductList = async ({ searchParams }: ProductListProps) => {
           <span className="font-bold text-3xl">/</span>
           <span className="text-stone-500">Premium Photos</span>
         </div>
-        <FilterWrapper categories={categories} prices={prices} />
+        <FilterWrapper />
         <SortOptions />
       </div>
       <div className="flex justify-center xl:justify-between mt-8">
