@@ -1,5 +1,3 @@
-import { Product } from "@/types";
-
 export function kilobytesToMegabytes(kilobytes: number) {
   const megabytes = kilobytes / 1024;
   const roundedMegabytes = Math.round(megabytes);
@@ -39,7 +37,9 @@ export function getDistinctCategoriesFromArray<T extends { category?: string }>(
 
   dataArray.forEach((item) => {
     if (item.category) {
-      categories.add(item.category);
+      const capitalizedCategory =
+        item.category.charAt(0).toUpperCase() + item.category.slice(1);
+      categories.add(capitalizedCategory);
     }
   });
 

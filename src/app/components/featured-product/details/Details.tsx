@@ -18,7 +18,7 @@ const Details: FC<DetailsProps> = ({
   size,
 }) => {
   return (
-    <div className="md:flex">
+    <div className="md:flex justify-between">
       <div className="md:w-1/2">
         <div className="font-bold text-[22px]">About {name}</div>
         <div className="text text-stone-500 max-w-[1290px] mt-8">
@@ -27,7 +27,7 @@ const Details: FC<DetailsProps> = ({
       </div>
       <div>
         <div className="md:w-fit">
-          <div className="font-bold	text-[22px] md:text-right">
+          <div className="font-bold	text-[22px] md:text-right md:mb-5">
             People also buy
           </div>
           <div className="flex gap-3 md:gap-6">
@@ -44,12 +44,14 @@ const Details: FC<DetailsProps> = ({
           </div>
         </div>
         <div>
-          <div className="font-bold	text-[22px] md:text-right">Details</div>
+          <div className="font-bold	text-[22px] md:text-right md:mt-5">
+            Details
+          </div>
           <div className="text-stone-500 md:text-right">
-            <div>
+            <div className="md:mt-2">
               Size: {dimensions?.width} x {dimensions?.height} pixel
             </div>
-            <div>Size: {kilobytesToMegabytes(size)}</div>
+            <div className="md:mt-2">Size: {kilobytesToMegabytes(size)}</div>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 export const products = [
   {
+    id: 1,
     name: "Red Bench",
     category: "nature",
     price: 3.89,
@@ -13,6 +14,7 @@ export const products = [
     details: null,
   },
   {
+    id: 2,
     name: "Egg Balloon",
     category: "nature",
     price: 93.89,
@@ -26,6 +28,7 @@ export const products = [
     details: null,
   },
   {
+    id: 3,
     name: "Man",
     category: "people",
     price: 50.99,
@@ -39,6 +42,7 @@ export const products = [
     details: null,
   },
   {
+    id: 4,
     name: "Empire State Building",
     category: "landmarks",
     price: 40.99,
@@ -56,6 +60,7 @@ export const products = [
     details: null,
   },
   {
+    id: 5,
     name: "Burj Khalifa",
     category: "landmarks",
     price: 22.59,
@@ -73,6 +78,7 @@ export const products = [
     details: null,
   },
   {
+    id: 6,
     name: "Riding",
     category: "people",
     price: 80.99,
@@ -109,6 +115,7 @@ export const products = [
   },
 
   {
+    id: 7,
     name: "Manhattan Bridge",
     category: "landmarks",
     price: 120,
@@ -126,6 +133,7 @@ export const products = [
     details: null,
   },
   {
+    id: 8,
     name: "San Francisco Bridge",
     category: "landmarks",
     price: 180,
@@ -143,6 +151,7 @@ export const products = [
     details: null,
   },
   {
+    id: 9,
     name: "Konzerthaus Berlin",
     category: "landmarks",
     price: 44.99,
@@ -161,6 +170,7 @@ export const products = [
   },
 
   {
+    id: 10,
     name: "FriendShip",
     category: "people",
     price: 220.99,
@@ -179,6 +189,7 @@ export const products = [
   },
 
   {
+    id: 11,
     name: "Distraction",
     category: "people",
     price: 99.99,
@@ -197,6 +208,7 @@ export const products = [
   },
 
   {
+    id: 12,
     name: "Angel Falls",
     category: "nature",
     price: 70.99,
@@ -214,6 +226,7 @@ export const products = [
     details: null,
   },
   {
+    id: 13,
     name: "Church",
     category: "landmarks",
     price: 5.99,
@@ -231,6 +244,7 @@ export const products = [
     details: null,
   },
   {
+    id: 14,
     name: "City",
     category: "nature",
     price: 9.99,
@@ -249,6 +263,7 @@ export const products = [
   },
 
   {
+    id: 15,
     name: "Rainbow",
     category: "nature",
     price: 130,
@@ -266,6 +281,7 @@ export const products = [
     details: null,
   },
   {
+    id: 16,
     name: "River",
     category: "nature",
     price: 101,
@@ -283,6 +299,7 @@ export const products = [
     details: null,
   },
   {
+    id: 17,
     name: "Kid",
     category: "people",
     price: 250,
@@ -301,6 +318,7 @@ export const products = [
   },
 
   {
+    id: 18,
     name: "Pizza",
     category: "food",
     price: 80.99,
@@ -318,6 +336,7 @@ export const products = [
     details: null,
   },
   {
+    id: 19,
     name: "Sushi",
     category: "landmarks",
     price: 44,
@@ -335,6 +354,7 @@ export const products = [
     details: null,
   },
   {
+    id: 20,
     name: "Chicken",
     category: "food",
     price: 129,

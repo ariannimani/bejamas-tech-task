@@ -18,7 +18,7 @@ const ProductList = async ({ products, searchParams }: ProductListProps) => {
   return (
     <div className="mt-5">
       <div className="flex justify-between">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 md:text-3xl">
           <span className="font-bold">Photography</span>
           <span className="font-bold text-3xl">/</span>
           <span className="text-stone-500">Premium Photos</span>
@@ -26,7 +26,7 @@ const ProductList = async ({ products, searchParams }: ProductListProps) => {
         <Image src={FilterIcon} alt="filter" className="xl:hidden" />
         <SortOptions />
       </div>
-      <div className="flex">
+      <div className="flex md:justify-between mt-8">
         <Filter categories={categories} prices={prices} />
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {products.length > 0 &&
@@ -36,7 +36,6 @@ const ProductList = async ({ products, searchParams }: ProductListProps) => {
         </div>
       </div>
       <Pagination searchParams={searchParams} totalPages={6} />
-      {/* {pages} /> */}
     </div>
   );
 };

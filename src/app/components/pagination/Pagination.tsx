@@ -22,7 +22,7 @@ const Pagination: FC<PaginationProps> = ({ searchParams, totalPages }) => {
   return (
     <div
       className={
-        "flex flex-row justify-center gap-2 mt-24 font-semibold text-2xl items-center"
+        "flex flex-row justify-center gap-2 mt-24 font-semibold text-2xl items-center mb-20"
       }
     >
       <Link href={canGoBack ? `/?page=${currentPage - 1}` : {}}>

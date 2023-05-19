@@ -24,7 +24,7 @@ const FeaturedProduct = ({ product }: any) => {
           alt={image.alt}
           width={details.dimensions.width}
           height={details.dimensions.height}
-          className="h-fit md:h-[553px] w-[1290px] object-cover"
+          className="h-fit md:h-[553px] object-cover"
         />
         <div className="absolute bottom-0 left-0 px-10 py-5 bg-white text-base font-bold">
           Photo of the day
