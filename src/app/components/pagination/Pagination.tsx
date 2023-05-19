@@ -24,7 +24,7 @@ const Pagination = async ({ searchParams }: PaginationProps) => {
       {!!pages && (
         <div
           className={
-            "flex flex-row justify-center gap-2 mt-24 font-semibold text-2xl items-center"
+            "flex flex-row justify-center gap-4 mt-24 font-semibold text-2xl items-center"
           }
         >
           <Link href={canGoBack ? `/?page=${currentPage - 1}` : {}}>

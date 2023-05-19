@@ -13,14 +13,21 @@ export interface Prices {
 interface FilterProps {
   categories: string[];
   prices: Prices[];
+  openFilterHandler?: () => void;
 }
-const Filter = ({ categories, prices }: FilterProps) => {
+const Filter = ({ categories, prices, openFilterHandler }: FilterProps) => {
   return (
-    <div className="hidden p-4 xl:block xl:w-1/5">
+    <div className="p-4 xl:block">
       <div className="border-b-2">
         <div className="flex justify-between mt-4">
-          <h3 className="font-bold">Filter</h3>
-          <h3 className="font-bold xl:hidden">X</h3>
+          <h3 className="hidden font-bold xl:block">Category</h3>
+          <h3 className="font-bold xl:hidden">Category</h3>
+          <h3
+            className="font-bold xl:hidden cursor-pointer"
+            onClick={openFilterHandler}
+          >
+            X
+          </h3>
         </div>
         {categories.map((category) => (
           <FilterItem key={category} title={category} type="category" />
@@ -35,10 +42,6 @@ const Filter = ({ categories, prices }: FilterProps) => {
             value={price.prices}
           />
         ))}
-      </div>
-      <div className="flex gap-2 mt-6 xl:hidden">
-        <Button type="secondary" title="Clear" onClick={() => {}} />
-        <Button type="primary" title="Save" onClick={() => {}} />
       </div>
     </div>
   );

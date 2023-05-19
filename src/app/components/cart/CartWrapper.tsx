@@ -8,7 +8,7 @@ const CartWrapper = async () => {
   const products = await getCartItems();
 
   return (
-    <div>
+    <div className="relative">
       {/* @ts-expect-error Server Component */}
       <Cart products={products} />
     </div>

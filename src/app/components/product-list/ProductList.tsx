@@ -4,7 +4,13 @@ import Image from "next/image";
 import { getDistinctCategories } from "@/firebase/categories";
 import { getProductsFromFirebase } from "@/firebase/getProducts";
 
-import { Pagination, ProductCard, Filter, SortOptions } from "@/app/components";
+import {
+  Pagination,
+  ProductCard,
+  Filter,
+  SortOptions,
+  FilterWrapper,
+} from "@/app/components";
 
 import { FilterIcon } from "@/assets/icons";
 interface ProductListProps {
@@ -22,11 +28,13 @@ const ProductList = async ({ searchParams }: ProductListProps) => {
           <span className="font-bold text-3xl">/</span>
           <span className="text-stone-500">Premium Photos</span>
         </div>
-        <Image src={FilterIcon} alt="filter" className="xl:hidden" />
+        <FilterWrapper categories={categories} prices={prices} />
         <SortOptions />
       </div>
-      <div className="flex md:justify-between mt-8">
-        <Filter categories={categories} prices={prices} />
+      <div className="flex justify-center xl:justify-between mt-8">
+        <div className="hidden xl:block">
+          <Filter categories={categories} prices={prices} />
+        </div>
         {products.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 place-items-center	 gap-6">
             {products.map((product) => (

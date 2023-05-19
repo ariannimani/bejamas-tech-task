@@ -9,3 +9,4 @@ export { default as CartWrapper } from "./cart/CartWrapper";
 export { default as Checkbox } from "./checkbox/CheckBox";
 export { default as Filter } from "./filter/Filter";
 export { default as SortOptions } from "./sort/SortOptions";
+export { default as FilterWrapper } from "./filter/FilterWrapper";
