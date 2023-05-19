@@ -1,22 +1,21 @@
-import React, { FC } from "react";
-import { Pagination, ProductCard } from "@/app/components";
-import Filter from "../filter/Filter";
+import React from "react";
 import Image from "next/image";
-import { FilterIcon } from "@/assets/icons";
-import { getDistinctCategories } from "@/firebase/categories";
-import SortOptions from "../sort/SortOptions";
-import { Product } from "@/types";
 
+import { getDistinctCategories } from "@/firebase/categories";
+import { getProductsFromFirebase } from "@/firebase/getProducts";
+
+import { Pagination, ProductCard, Filter, SortOptions } from "@/app/components";
+
+import { FilterIcon } from "@/assets/icons";
 interface ProductListProps {
-  products: Product[];
   searchParams: { [key: string]: string | string[] | undefined };
 }
-const ProductList = async ({ products, searchParams }: ProductListProps) => {
-  const { categories, prices, pages } = await getDistinctCategories();
+const ProductList = async ({ searchParams }: ProductListProps) => {
+  const { products } = await getProductsFromFirebase(searchParams);
+  const { categories, prices } = await getDistinctCategories();
 
-  if (!categories && !prices && !pages) return <></>;
   return (
-    <div className="mt-5">
+    <div className="mt-5 w-full">
       <div className="flex justify-between">
         <div className="flex items-center gap-2 md:text-3xl">
           <span className="font-bold">Photography</span>
@@ -28,14 +27,20 @@ const ProductList = async ({ products, searchParams }: ProductListProps) => {
       </div>
       <div className="flex md:justify-between mt-8">
         <Filter categories={categories} prices={prices} />
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {products.length > 0 &&
-            products.map((product) => (
+        {products.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 place-items-center	 gap-6">
+            {products.map((product) => (
               <ProductCard key={product.name} product={product} />
             ))}
-        </div>
+          </div>
+        ) : (
+          <div className="mt-4 flex justify-center items-center w-full">
+            NO IMAGE FOUND
+          </div>
+        )}
       </div>
-      <Pagination searchParams={searchParams} totalPages={6} />
+      {/* @ts-expect-error Server Component */}
+      <Pagination searchParams={searchParams} />
     </div>
   );
 };

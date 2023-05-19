@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
-import Checkbox from "../../checkbox/CheckBox";
+
+import { Checkbox } from "@/app/components";
 
 const FilterItem = ({ title, type }: any) => {
   return (

@@ -1,10 +1,13 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
+
 import { db } from "./config";
+
 import {
   categorizePrices,
   getDistinctCategoriesFromArray,
   sortArrayById,
 } from "@/utils/utils";
+
 import { Product } from "@/types";
 
 const productsCollectionRef = collection(db, "products");
@@ -15,6 +18,29 @@ export async function getDistinctCategories() {
   const categories = getDistinctCategoriesFromArray(products);
   const prices = categorizePrices(products);
   const sortedPrices = sortArrayById(prices);
+  return { categories, prices: sortedPrices };
+}
+
+export async function getPages(searchParams: {
+  [key: string]: string | string[] | undefined;
+}) {
+  let productsQuery = query(productsCollectionRef);
+  if (searchParams) {
+    if (searchParams.price) {
+      productsQuery = query(
+        productsQuery,
+        where("price", "<=", searchParams.price)
+      );
+    }
+    if (searchParams.category) {
+      productsQuery = query(
+        productsQuery,
+        where("category", "==", searchParams.category)
+      );
+    }
+  }
+  const data = await getDocs(productsQuery);
+  const products: Product[] = data.docs.map((doc) => doc.data() as Product);
   const pages = Math.ceil(products.length / 6);
-  return { categories, prices: sortedPrices, pages };
+  return { pages };
 }

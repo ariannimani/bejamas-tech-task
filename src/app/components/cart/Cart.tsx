@@ -1,20 +1,23 @@
 "use client";
-import React, { FC, useState } from "react";
-import { Button } from "@/app/components";
-
+import React, { FC, useState, useTransition } from "react";
 import Image from "next/image";
-import CartItem from "./cart-item/CartItem";
-import { CartIcon, CloseIcon } from "@/assets/icons";
-import { clearCartItems } from "@/firebase/cartFunctions";
 import { useRouter } from "next/navigation";
-import { addProducts } from "@/firebase/getProducts";
+
+import { clearCartItems } from "@/firebase/cartFunctions";
+
 import { Product } from "@/types";
+
+import { CartItem } from "./cart-item";
+import { Button } from "@/app/components";
+import { CartIcon, CloseIcon } from "@/assets/icons";
 
 interface CartProps {
   products: Product[];
 }
 const Cart: FC<CartProps> = ({ products }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isPending, startTransition] = useTransition();
+
   const openCartHandler = () => {
     setIsOpen(!isOpen);
   };
@@ -22,8 +25,9 @@ const Cart: FC<CartProps> = ({ products }) => {
 
   const clearCartHandler = () => {
     clearCartItems();
-    // addProducts();
-    router.refresh();
+    startTransition(() => {
+      router.refresh();
+    });
   };
   return (
     <>
@@ -60,6 +64,8 @@ const Cart: FC<CartProps> = ({ products }) => {
               title="Clear"
               onClick={() => clearCartHandler()}
               className="mt-6"
+              isLoading={isPending}
+              loadingContent="CLEARING"
             />
           </div>
         </div>

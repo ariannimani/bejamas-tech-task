@@ -1,6 +1,6 @@
 "use client";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import React, { ChangeEvent } from "react";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
 interface CheckboxProps {
   label?: string;
@@ -25,6 +25,7 @@ const Checkbox: React.FC<CheckboxProps> = ({ label, checked, type }) => {
     const newQueryString = isChecked
       ? createQueryString(type, label?.toLowerCase())
       : "";
+
     router.push(pathname + "?" + newQueryString);
   };
 

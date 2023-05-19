@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={archivo.className}>
         <div className="flex justify-center ">
-          <div className="border-2 border-red-400 container">{children}</div>
+          <div className="container">{children}</div>
         </div>
       </body>
     </html>

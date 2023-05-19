@@ -11,6 +11,7 @@ import {
 
 import { db } from "./config";
 import { products } from "./data";
+
 import { Product } from "@/types";
 
 const productsCollectionRef = collection(db, "products");
@@ -22,12 +23,35 @@ export const getProductsFromFirebase = async (searchParams: {
 
   if (searchParams) {
     if (searchParams.price) {
-      productsQuery = query(
-        productsQuery,
-        where("price", "<=", searchParams.price),
-        limit(6)
-      );
+      if (searchParams.price === "lower than $20") {
+        productsQuery = query(
+          productsQuery,
+          where("price", "<=", 20),
+          limit(6)
+        );
+      } else if (searchParams.price === "$20 - $100") {
+        productsQuery = query(
+          productsQuery,
+          where("price", ">=", 20),
+          where("price", "<=", 100),
+          limit(6)
+        );
+      } else if (searchParams.price === "$100 - $200") {
+        productsQuery = query(
+          productsQuery,
+          where("price", ">=", 100),
+          where("price", "<=", 200),
+          limit(6)
+        );
+      } else if (searchParams.price === "more than $200") {
+        productsQuery = query(
+          productsQuery,
+          where("price", ">=", 200),
+          limit(6)
+        );
+      }
     }
+
     if (searchParams.category) {
       productsQuery = query(
         productsQuery,
@@ -52,7 +76,8 @@ export const getProductsFromFirebase = async (searchParams: {
 
   const data = await getDocs(productsQuery);
   const products: Product[] = data.docs.map((doc) => doc.data() as Product);
-  return products;
+
+  return { products };
 };
 
 export const addProducts = () => {

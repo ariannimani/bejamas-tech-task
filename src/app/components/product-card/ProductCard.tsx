@@ -1,19 +1,25 @@
 "use client";
-import React from "react";
 import Image from "next/image";
-import { Button } from "@/app/components";
-import { capitalizeFirstLetter, convertToCurrency } from "@/utils/utils";
-import { addToCart } from "@/firebase/cartFunctions";
+import React, { useTransition } from "react";
 import { useRouter } from "next/navigation";
+
+import { addToCart } from "@/firebase/cartFunctions";
+
+import { Button } from "@/app/components";
+
+import { capitalizeFirstLetter, convertToCurrency } from "@/utils/utils";
 
 const ProductCard = ({ product }: any) => {
   const router = useRouter();
+  const [isPending, startTransition] = useTransition();
 
   const { name, category, price, currency, image, bestseller } = product;
 
   const addToCartHandler = () => {
     addToCart(product);
-    router.refresh();
+    startTransition(() => {
+      router.refresh();
+    });
   };
   return (
     <div className="mt-4">
@@ -31,8 +37,10 @@ const ProductCard = ({ product }: any) => {
         <Button
           type="primary"
           title="Add to cart"
+          isLoading={isPending}
           onClick={() => addToCartHandler()}
           className="hidden group-hover:block group-hover:absolute bottom-0 left-0"
+          loadingContent="ADDING"
         />
       </div>
       <div className="font-bold text-lg text-stone-500 mt-4">

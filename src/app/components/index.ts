@@ -4,3 +4,8 @@ export { default as FeaturedProduct } from "./featured-product/FeaturedProduct";
 export { default as ProductCard } from "./product-card/ProductCard";
 export { default as Button } from "./button/Button";
 export { default as Pagination } from "./pagination/Pagination";
+export { default as LoadingDots } from "./loading-dots/LoadingDots";
+export { default as CartWrapper } from "./cart/CartWrapper";
+export { default as Checkbox } from "./checkbox/CheckBox";
+export { default as Filter } from "./filter/Filter";
+export { default as SortOptions } from "./sort/SortOptions";

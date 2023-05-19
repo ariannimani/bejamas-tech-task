@@ -1,6 +1,6 @@
 "use client";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { ChangeEvent } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const SortOptions = () => {
   const router = useRouter();

@@ -1,11 +1,11 @@
-import { getCartItems } from "@/firebase/cartFunctions";
 import React from "react";
+
+import { getCartItems } from "@/firebase/cartFunctions";
+
 import Cart from "./Cart";
 
 const CartWrapper = async () => {
   const products = await getCartItems();
-
-  if (!products) return <></>;
 
   return (
     <div>

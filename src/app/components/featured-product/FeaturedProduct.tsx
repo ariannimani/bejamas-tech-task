@@ -1,18 +1,23 @@
 "use client";
 import Image from "next/image";
-import React from "react";
-import { Button } from "@/app/components";
-import { addToCart } from "@/firebase/cartFunctions";
+import React, { useTransition } from "react";
 import { useRouter } from "next/navigation";
-import Details from "./details/Details";
+
+import { addToCart } from "@/firebase/cartFunctions";
+
+import { Button } from "@/app/components";
+import { Details } from "./details";
 
 const FeaturedProduct = ({ product }: any) => {
   const router = useRouter();
+  const [isPending, startTransition] = useTransition();
   const { name, image, details } = product;
 
   const addToCartHandler = () => {
     addToCart(product);
-    router.refresh();
+    startTransition(() => {
+      router.refresh();
+    });
   };
 
   return (
@@ -34,6 +39,8 @@ const FeaturedProduct = ({ product }: any) => {
         type="primary"
         title="Add to cart"
         onClick={() => addToCartHandler()}
+        isLoading={isPending}
+        loadingContent="ADDING"
       />
       <Details
         name={name}

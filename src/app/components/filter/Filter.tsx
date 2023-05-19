@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
-import FilterItem from "./filter-item/FilterItem";
-import Button from "../button/Button";
+
+import { Button } from "@/app/components";
+import { FilterItem } from "./filter-item";
 
 export interface Prices {
   id: number;

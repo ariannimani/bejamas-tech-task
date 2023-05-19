@@ -1,8 +1,9 @@
-import { Product } from "@/types";
-import { convertToCurrency } from "@/utils/utils";
-import Image from "next/image";
 import React, { FC } from "react";
+import Image from "next/image";
 
+import { Product } from "@/types";
+
+import { convertToCurrency } from "@/utils/utils";
 interface CartItem {
   product: Product;
 }

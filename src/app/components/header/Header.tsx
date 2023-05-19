@@ -1,6 +1,7 @@
-import Image from "next/image";
 import React from "react";
-import CartWrapper from "../cart/CartWrapper";
+import Image from "next/image";
+
+import { CartWrapper } from "@/app/components";
 import { LogoIcon } from "@/assets/icons";
 
 const Header = () => {

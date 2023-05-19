@@ -1,4 +1,5 @@
 import { collection, addDoc, getDocs, deleteDoc } from "firebase/firestore";
+
 import { db } from "./config";
 
 const cartCollectionRef = collection(db, "cart");
