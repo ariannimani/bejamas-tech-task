@@ -11,8 +11,11 @@ const SortOptions = () => {
 
   const handleOptionChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
+    const current = new URLSearchParams(searchParams);
+
+    current.delete("page");
     const newQueryString = value
-      ? createQueryString("sort", value, searchParams)
+      ? createQueryString("sort", value, current)
       : "";
     router.push(pathname + "?" + newQueryString);
   };
