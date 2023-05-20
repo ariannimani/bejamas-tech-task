@@ -11,7 +11,6 @@ import {
 } from "firebase/firestore";
 
 import { db } from "./config";
-import { products } from "./data";
 
 import { Product } from "@/types";
 
@@ -90,11 +89,6 @@ export const getProductsFromFirebase = async (searchParams: {
   const products: Product[] = data.docs.map((doc) => doc.data() as Product);
 
   return { products };
-};
-
-export const addProducts = () => {
-  const data = products;
-  data.forEach((product) => addDoc(productsCollectionRef, product));
 };
 
 export const getFeaturedPost = async () => {
