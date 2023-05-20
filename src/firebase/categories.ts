@@ -33,10 +33,12 @@ export async function getPages(searchParams: {
       );
     }
     if (searchParams.category) {
-      productsQuery = query(
-        productsQuery,
-        where("category", "==", searchParams.category)
-      );
+      let elements: string[] = [];
+      if (!Array.isArray(searchParams.category)) {
+        elements = searchParams.category.split("|");
+      }
+
+      productsQuery = query(productsQuery, where("category", "in", elements));
     }
   }
   const data = await getDocs(productsQuery);

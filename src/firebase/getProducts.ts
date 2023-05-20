@@ -7,6 +7,7 @@ import {
   where,
   limit,
   startAfter,
+  startAt,
 } from "firebase/firestore";
 
 import { db } from "./config";
@@ -23,7 +24,7 @@ export const getProductsFromFirebase = async (searchParams: {
 
   if (searchParams) {
     if (searchParams.price) {
-      if (searchParams.price === "lower than $20") {
+      if (searchParams.price === "Lower than $20") {
         productsQuery = query(
           productsQuery,
           where("price", "<=", 20),
@@ -43,7 +44,7 @@ export const getProductsFromFirebase = async (searchParams: {
           where("price", "<=", 200),
           limit(6)
         );
-      } else if (searchParams.price === "more than $200") {
+      } else if (searchParams.price === "More than $200") {
         productsQuery = query(
           productsQuery,
           where("price", ">=", 200),
@@ -53,9 +54,14 @@ export const getProductsFromFirebase = async (searchParams: {
     }
 
     if (searchParams.category) {
+      let elements: string[] = [];
+      if (!Array.isArray(searchParams.category)) {
+        elements = searchParams.category.split("|");
+      }
+
       productsQuery = query(
         productsQuery,
-        where("category", "==", searchParams.category),
+        where("category", "in", elements),
         limit(6)
       );
     }
@@ -67,10 +73,16 @@ export const getProductsFromFirebase = async (searchParams: {
     }
 
     if (searchParams.page) {
-      const documentSnapshots = await getDocs(productsQuery);
-      const lastVisible =
-        documentSnapshots.docs[documentSnapshots.docs.length - 1];
-      productsQuery = query(productsQuery, startAfter(lastVisible), limit(6));
+      const pageNumber = !Array.isArray(searchParams.page)
+        ? parseInt(searchParams.page, 10)
+        : parseInt("0", 10);
+      const startIndex = (pageNumber - 1) * 6;
+      productsQuery = query(
+        productsQuery,
+        orderBy("id"),
+        startAt(startIndex),
+        limit(6)
+      );
     }
   }
 

@@ -88,3 +88,13 @@ export function categorizePrices<T extends { price: number }>(
 export function sortArrayById<T extends { id: number }>(array: T[]): T[] {
   return array.slice().sort((a, b) => a.id - b.id);
 }
+
+export const createQueryString = (
+  name: string,
+  value: string | undefined,
+  searchParams: any
+) => {
+  const params = new URLSearchParams(searchParams);
+  params.set(name, value || "");
+  return params.toString();
+};

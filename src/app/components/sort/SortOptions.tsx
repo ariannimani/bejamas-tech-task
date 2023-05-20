@@ -2,20 +2,18 @@
 import React, { ChangeEvent } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
+import { createQueryString } from "@/utils/utils";
+
 const SortOptions = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams: any = useSearchParams();
 
-  const createQueryString = (name: string, value: string | undefined) => {
-    const params = new URLSearchParams(searchParams);
-    params.set(name, value || "");
-    return params.toString();
-  };
-
   const handleOptionChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
-    const newQueryString = value ? createQueryString("sort", value) : "";
+    const newQueryString = value
+      ? createQueryString("sort", value, searchParams)
+      : "";
     router.push(pathname + "?" + newQueryString);
   };
 

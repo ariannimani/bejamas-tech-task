@@ -5,6 +5,7 @@ import Image from "next/image";
 import { getPages } from "@/firebase/categories";
 
 import { LeftArrowIcon, RightArrowIcon } from "@/assets/icons";
+
 interface PaginationProps {
   searchParams: { [key: string]: string | string[] | undefined };
 }
@@ -19,15 +20,31 @@ const Pagination = async ({ searchParams }: PaginationProps) => {
   const canGoBack = currentPage > 1;
   const canGoNext = currentPage < pages;
 
+  const getQueryParamString = (params: { [key: string]: string | number }) => {
+    const queryParamKeys = Object.keys(params).filter(
+      (key) => params[key] !== undefined
+    );
+    const queryParamString = queryParamKeys
+      .map((key) => `${key}=${encodeURIComponent(params[key])}`)
+      .join("&");
+    return queryParamString;
+  };
+
   return (
     <div className="mb-20">
       {!!pages && (
-        <div
-          className={
-            "flex flex-row justify-center gap-4 mt-24 font-semibold text-2xl items-center"
-          }
-        >
-          <Link href={canGoBack ? `/?page=${currentPage - 1}` : {}}>
+        <div className="flex flex-row justify-center gap-4 mt-24 font-semibold text-2xl items-center">
+          <Link
+            href={
+              canGoBack
+                ? `/?${getQueryParamString({
+                    ...searchParams,
+                    page: currentPage - 1,
+                  })}`
+                : "#"
+            }
+            className={!canGoBack ? "hidden" : "block"}
+          >
             <span>
               <Image src={LeftArrowIcon} alt="left arrow" />
             </span>
@@ -40,14 +57,28 @@ const Pagination = async ({ searchParams }: PaginationProps) => {
             return (
               <Link
                 key={page}
-                href={currentPage !== page ? `/?page=${page}` : {}}
+                href={
+                  currentPage !== page
+                    ? `/?${getQueryParamString({ ...searchParams, page })}`
+                    : "#"
+                }
               >
                 {page}
               </Link>
             );
           })}
 
-          <Link href={canGoNext ? `/?page=${currentPage + 1}` : {}}>
+          <Link
+            href={
+              canGoNext
+                ? `/?${getQueryParamString({
+                    ...searchParams,
+                    page: currentPage + 1,
+                  })}`
+                : "#"
+            }
+            className={!canGoNext ? "hidden" : "block"}
+          >
             <span>
               <Image src={RightArrowIcon} alt="right arrow" />
             </span>
