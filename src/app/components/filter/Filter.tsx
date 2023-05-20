@@ -1,9 +1,8 @@
 "use client";
-import React, { useContext } from "react";
+import React from "react";
 
-import { Button } from "@/app/components";
 import { FilterItem } from "./filter-item";
-import { FilterContext } from "@/app/context/FilterContext";
+import { useFilter } from "@/app/context/FilterContext";
 
 export interface Prices {
   id: number;
@@ -14,19 +13,20 @@ export interface Prices {
 interface FilterProps {
   categories: string[];
   prices: Prices[];
-  openFilterHandler?: () => void;
 }
-const Filter = ({ categories, prices, openFilterHandler }: FilterProps) => {
-  const isOpen = useContext(FilterContext);
-  console.log({ isOpen });
+const Filter = ({ categories, prices }: FilterProps) => {
+  const { isVisible, setIsVisible } = useFilter();
+
+  const openFilterHandler = () => {
+    setIsVisible({ type: "TOGGLE", isVisible: false });
+  };
   return (
     <>
-      {isOpen && (
-        <div className="p-4 xl:block">
+      {isVisible && (
+        <div className="p-4 absolute top-0 left-0 right-0 xl:relative xl:block bg-white z-10">
           <div className="border-b-2">
             <div className="flex justify-between mt-4">
-              <h3 className="hidden font-bold xl:block">Category</h3>
-              <h3 className="font-bold xl:hidden">Category</h3>
+              <h3 className="font-bold xl:block">Category</h3>
               <h3
                 className="font-bold xl:hidden cursor-pointer"
                 onClick={openFilterHandler}

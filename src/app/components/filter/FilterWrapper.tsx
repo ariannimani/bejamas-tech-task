@@ -1,28 +1,28 @@
 "use client";
+import React from "react";
 import Image from "next/image";
-import React, { useState } from "react";
 
 import { FilterIcon } from "@/assets/icons";
-import { FilterContext } from "@/app/context/FilterContext";
+import { FilterAction, useFilter } from "@/app/context/FilterContext";
 
 const FilterWrapper = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const { isVisible, setIsVisible } = useFilter();
 
   const openFilterHandler = () => {
-    setIsOpen(!isOpen);
+    const filterAction: FilterAction = {
+      type: "TOGGLE",
+      isVisible: !isVisible,
+    };
+    setIsVisible(filterAction);
   };
 
   return (
-    <FilterContext.Provider value={isOpen}>
-      <div>
-        <Image
-          src={FilterIcon}
-          alt="filter"
-          className="xl:hidden"
-          onClick={openFilterHandler}
-        />
-      </div>
-    </FilterContext.Provider>
+    <Image
+      src={FilterIcon}
+      alt="filter"
+      className="xl:hidden"
+      onClick={openFilterHandler}
+    />
   );
 };
 
