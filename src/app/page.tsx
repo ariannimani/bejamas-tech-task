@@ -4,8 +4,6 @@ import { getFeaturedPost } from "@/firebase/getProducts";
 
 import { Header, FeaturedProduct, ProductList } from "@/app/components";
 
-export const fetchCache = "force-no-store";
-
 export default async function Home({
   searchParams,
 }: {

@@ -31,6 +31,7 @@ const FeaturedProduct = ({ product }: any) => {
           width={details.dimensions.width}
           height={details.dimensions.height}
           className="h-fit md:h-[553px] object-cover"
+          priority
         />
         <div className="absolute bottom-0 left-0 px-10 py-5 bg-white text-base font-bold">
           Photo of the day
