@@ -4,8 +4,9 @@
 
 Install:
 
-````bash
-npm install```
+```bash
+npm install
+````
 
 
 First, run the development server:
