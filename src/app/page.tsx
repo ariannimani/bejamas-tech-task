@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 
-import { getCartItems } from "@/firebase/cartFunctions";
 import { getFeaturedPost } from "@/firebase/getProducts";
 
 import { Header, FeaturedProduct, ProductList } from "@/app/components";
@@ -13,7 +12,6 @@ export default async function Home({
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const featured = await getFeaturedPost();
-  const cartItems = await getCartItems();
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-4 px-3.5 md:px-20">
