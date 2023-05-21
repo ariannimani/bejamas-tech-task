@@ -16,10 +16,11 @@ const ProductCard = ({ product }: any) => {
   const { name, category, price, currency, image, bestseller } = product;
 
   const addToCartHandler = () => {
-    addToCart(product);
-    startTransition(() => {
-      router.refresh();
-    });
+    addToCart(product).then(() =>
+      startTransition(() => {
+        router.refresh();
+      })
+    );
   };
   return (
     <div className="mt-4">

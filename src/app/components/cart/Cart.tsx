@@ -24,10 +24,11 @@ const Cart: FC<CartProps> = ({ products }) => {
   const router = useRouter();
 
   const clearCartHandler = () => {
-    clearCartItems();
-    startTransition(() => {
-      router.refresh();
-    });
+    clearCartItems().then(() =>
+      startTransition(() => {
+        router.refresh();
+      })
+    );
   };
   return (
     <>

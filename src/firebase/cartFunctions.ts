@@ -4,10 +4,8 @@ import { db } from "./config";
 
 const cartCollectionRef = collection(db, "cart");
 
-export const addToCart = (data: any) => {
-  addDoc(cartCollectionRef, data).catch((error) => {
-    console.log(error);
-  });
+export const addToCart = async (data: any) => {
+  await addDoc(cartCollectionRef, data);
 };
 
 export const getCartItems = async () => {

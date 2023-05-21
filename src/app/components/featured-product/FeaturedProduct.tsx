@@ -14,10 +14,11 @@ const FeaturedProduct = ({ product }: any) => {
   const { name, image, details } = product;
 
   const addToCartHandler = () => {
-    addToCart(product);
-    startTransition(() => {
-      router.refresh();
-    });
+    addToCart(product).then(() =>
+      startTransition(() => {
+        router.refresh();
+      })
+    );
   };
 
   return (
