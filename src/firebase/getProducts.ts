@@ -78,6 +78,7 @@ export const getProductsFromFirebase = async (searchParams: {
       const startIndex = (pageNumber - 1) * 6;
       productsQuery = query(
         productsQuery,
+        orderBy("price"),
         orderBy("id"),
         startAt(startIndex),
         limit(6)

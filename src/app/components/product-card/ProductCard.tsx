@@ -22,8 +22,9 @@ const ProductCard = ({ product }: any) => {
       })
     );
   };
+
   return (
-    <div className="mt-4">
+    <article className="mt-4">
       <div className="relative group">
         <Image
           src={image.src}
@@ -33,7 +34,9 @@ const ProductCard = ({ product }: any) => {
           className="h-[502px] w-[362px] object-cover"
         />
         {bestseller && (
-          <div className="absolute top-0 left-0 p-2 bg-white">Best seller</div>
+          <span className="absolute top-0 left-0 p-2 bg-white">
+            Best seller
+          </span>
         )}
         <Button
           type="primary"
@@ -44,14 +47,14 @@ const ProductCard = ({ product }: any) => {
           loadingContent="ADDING"
         />
       </div>
-      <div className="font-bold text-lg text-stone-500 mt-4">
+      <span className="block font-bold text-lg text-stone-500 mt-4">
         {capitalizeFirstLetter(category)}
-      </div>
-      <div className="font-bold text-3xl mt-4">{name}</div>
-      <div className="text-stone-500 text-3xl mt-4">
+      </span>
+      <h3 className="font-bold text-3xl mt-4">{name}</h3>
+      <span className="block text-stone-500 text-3xl mt-4">
         {convertToCurrency(currency, price)}
-      </div>
-    </div>
+      </span>
+    </article>
   );
 };
 

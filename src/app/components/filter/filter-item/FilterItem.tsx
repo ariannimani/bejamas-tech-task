@@ -63,10 +63,10 @@ const FilterItem: FC<FilterItemProps> = ({ title, type, multiple = false }) => {
   };
 
   return (
-    <label className="flex gap-1 mt-4">
+    <li className="flex gap-1 mt-4">
       <Checkbox onChange={handleCheckboxChange} type={type} />
       {title}
-    </label>
+    </li>
   );
 };
 

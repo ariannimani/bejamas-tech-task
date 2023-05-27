@@ -14,14 +14,15 @@ import { CartIcon, CloseIcon } from "@/assets/icons";
 interface CartProps {
   products: Product[];
 }
+
 const Cart: FC<CartProps> = ({ products }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
+  const router = useRouter();
 
   const openCartHandler = () => {
     setIsOpen(!isOpen);
   };
-  const router = useRouter();
 
   const clearCartHandler = () => {
     clearCartItems().then(() =>
@@ -30,14 +31,15 @@ const Cart: FC<CartProps> = ({ products }) => {
       })
     );
   };
+
   return (
     <>
-      <div className="">
+      <div>
         <Image src={CartIcon} alt="cart" onClick={openCartHandler} />
         {products.length > 0 && (
-          <div className="bg-black text-white text-center w-[22px] h-[22px] absolute -right-3 -bottom-4">
+          <span className="bg-black text-white text-center w-[22px] h-[22px] absolute -right-3 -bottom-4">
             {products.length}
-          </div>
+          </span>
         )}
       </div>
       {isOpen && (
@@ -52,13 +54,13 @@ const Cart: FC<CartProps> = ({ products }) => {
               />
             </div>
             {products.length > 0 ? (
-              <div className="border-b-2 border-stone-300 max-h-[400px] overflow-auto">
+              <ul className="border-b-2 border-stone-300 max-h-[400px] overflow-auto">
                 {products.map((product) => (
                   <CartItem key={product.name} product={product} />
                 ))}
-              </div>
+              </ul>
             ) : (
-              <div className="text-center">Cart is Empty</div>
+              <p className="text-center">Cart is Empty</p>
             )}
             <Button
               type="secondary"

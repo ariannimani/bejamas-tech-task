@@ -22,9 +22,9 @@ const FeaturedProduct = ({ product }: any) => {
   };
 
   return (
-    <div className="border-b-2 group flex flex-col gap-[35px] mt-[18px]">
-      <div className="font-bold	text-3xl">{name}</div>
-      <div className="relative">
+    <section className="border-b-2 group flex flex-col gap-[35px] mt-[18px]">
+      <h3 className="font-bold text-3xl">{name}</h3>
+      <figure className="relative">
         <Image
           src={image.src}
           alt={image.alt}
@@ -33,10 +33,10 @@ const FeaturedProduct = ({ product }: any) => {
           className="h-fit md:h-[553px] object-cover"
           priority
         />
-        <div className="absolute bottom-0 left-0 px-10 py-5 bg-white text-base font-bold">
+        <figcaption className="absolute bottom-0 left-0 px-10 py-5 bg-white text-base font-bold">
           Photo of the day
-        </div>
-      </div>
+        </figcaption>
+      </figure>
       <Button
         type="primary"
         title="Add to cart"
@@ -51,7 +51,7 @@ const FeaturedProduct = ({ product }: any) => {
         dimensions={details.dimensions}
         size={details.size}
       />
-    </div>
+    </section>
   );
 };
 
