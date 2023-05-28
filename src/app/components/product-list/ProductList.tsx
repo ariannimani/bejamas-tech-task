@@ -30,7 +30,7 @@ const ProductList = async ({ searchParams }: ProductListProps) => {
             <span className="text-3xl">/</span>
             <span className="text-stone-500">Premium Photos</span>
           </h1>
-          <div className="flex justify-between">
+          <div className="flex justify-end">
             <FilterIconWrapper />
             <SortOptions />
           </div>
