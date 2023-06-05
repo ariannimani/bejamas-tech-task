@@ -1,4 +1,4 @@
-## Bejamas Tech Task
+## Ecommerce NextJs Page
 
 ### Getting Started
 
